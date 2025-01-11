@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>视频播放器</title>
+  <link href="../node_modules/video.js/dist/video-js.css" rel="stylesheet">
+  <link href="../assets/styles/main.css" rel="stylesheet">
+  <script src="../node_modules/video.js/dist/video.min.js"></script>
+  <script src="../node_modules/hls.js/dist/hls.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div class="titlebar">
+      <div class="titlebar-drag">
+        <img src="../assets/icons/icon.svg" width="16" height="16" style="vertical-align: middle; margin-right: 8px;">
+        视频播放器
+      </div>
+      <div class="titlebar-buttons">
+        <button id="minimize" class="titlebar-button">─</button>
+        <button id="maximize" class="titlebar-button">□</button>
+        <button id="close" class="titlebar-button close">×</button>
+      </div>
+    </div>
+    <div class="main-container">
+      <div class="sidebar">
+        <div class="playlist">
+          <div class="playlist-header">
+            <h3>播放列表</h3>
+            <button id="open-file" class="open-file-btn">打开文件</button>
+          </div>
+          <ul id="video-list"></ul>
+        </div>
+      </div>
+      <div class="video-container">
+        <video id="video-player" class="video-js vjs-default-skin">
+          <p class="vjs-no-js">
+            要查看此视频，请启用 JavaScript，并考虑升级到支持 HTML5 视频的浏览器。
+          </p>
+        </video>
+      </div>
+    </div>
+  </div>
+  <script src="../src/renderer/index.js"></script>
+</body>
+</html> 
