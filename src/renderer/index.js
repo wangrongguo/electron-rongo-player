@@ -173,8 +173,17 @@ function loadPlaybackState(videoPath) {
   const state = states[videoPath];
   
   if (state) {
-    // 设置播放位置
-    player.currentTime(state.currentTime);
+    // 获取视频总时长
+    const duration = player.duration();
+    
+    // 如果播放位置接近视频结尾(最后1秒)或已结束，则从头开始播放
+    if (duration && (state.currentTime >= duration - 1)) {
+      player.currentTime(0);
+    } else {
+      // 否则设置保存的播放位置
+      player.currentTime(state.currentTime);
+    }
+    
     // 设置播放速率
     player.playbackRate(state.playbackRate);
     lastPlaybackRate = state.playbackRate;
