@@ -1,6 +1,6 @@
 {
   "name": "electron-video-player",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "跨平台视频播放器",
   "main": "src/main/main.js",
   "scripts": {
@@ -58,9 +58,7 @@
     "electron-store": "^8.1.0",
     "electron-updater": "^6.1.7",
     "hls.js": "^1.4.12",
-    "video.js": "^8.6.1",
-    "vue": "^3.3.8",
-    "vuex": "^4.1.0"
+    "video.js": "^8.6.1"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
@@ -68,4 +66,4 @@
     "electron-builder": "^24.6.4",
     "electron-reload": "^1.5.0"
   }
-} 
+}

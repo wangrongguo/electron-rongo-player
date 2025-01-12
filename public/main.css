@@ -1,3 +1,16 @@
+:root {
+  --primary-100: #8FBF9F;
+  --primary-200: #68a67d;
+  --primary-300: #24613b;
+  --accent-100: #F18F01;
+  --accent-200: #833500;
+  --text-100: #353535;
+  --text-200: #5f5f5f;
+  --bg-100: #F5ECD7;
+  --bg-200: #ebe2cd;
+  --bg-300: #c2baa6;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,8 +19,8 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background-color: #1a1a1a;
-  color: #ffffff;
+  background-color: var(--bg-100);
+  color: var(--text-100);
   height: 100vh;
   overflow: hidden;
 }
@@ -21,17 +34,19 @@ body {
 /* 标题栏样式 */
 .titlebar {
   height: 32px;
-  background: #2e2c29;
+  background: var(--bg-200);
   display: flex;
   justify-content: space-between;
   align-items: center;
   -webkit-app-region: drag;
   user-select: none;
+  border-bottom: 1px solid transparent;
 }
 
 .titlebar-drag {
   padding: 0 12px;
   font-size: 14px;
+  color: var(--text-100);
 }
 
 .titlebar-buttons {
@@ -44,18 +59,21 @@ body {
   height: 32px;
   border: none;
   background: transparent;
-  color: #ffffff;
+  color: var(--text-100);
   font-size: 16px;
   cursor: pointer;
   outline: none;
+  transition: all 0.2s ease;
 }
 
 .titlebar-button:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--primary-100);
+  color: var(--text-100);
 }
 
 .titlebar-button.close:hover {
-  background: #e81123;
+  background: var(--accent-200);
+  color: var(--bg-100);
 }
 
 /* 主容器样式 */
@@ -68,8 +86,8 @@ body {
 /* 侧边栏样式 */
 .sidebar {
   width: 250px;
-  background: #2e2c29;
-  border-right: 1px solid #3e3e3e;
+  background: var(--bg-200);
+  border-right: 1px solid transparent;
   display: flex;
   flex-direction: column;
 }
@@ -91,21 +109,22 @@ body {
   margin: 0;
   font-size: 16px;
   font-weight: 500;
+  color: var(--text-100);
 }
 
 .open-file-btn {
   padding: 6px 12px;
-  background: #4a4a4a;
+  background: var(--primary-100);
   border: none;
   border-radius: 4px;
-  color: #ffffff;
+  color: var(--text-100);
   font-size: 12px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
 }
 
 .open-file-btn:hover {
-  background: #5a5a5a;
+  background: var(--primary-200);
 }
 
 #video-list {
@@ -121,15 +140,18 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
+  color: var(--text-100);
+  border: 1px solid transparent;
 }
 
 #video-list li:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--primary-100);
 }
 
 #video-list li.playing {
-  background: rgba(0, 120, 215, 0.2);
+  background: var(--primary-200);
+  color: var(--text-100);
 }
 
 .video-name {
@@ -144,11 +166,11 @@ body {
   opacity: 0;
   background: transparent;
   border: none;
-  color: #ffffff;
+  color: var(--text-100);
   cursor: pointer;
   font-size: 16px;
   padding: 0 4px;
-  transition: opacity 0.2s;
+  transition: all 0.2s ease;
 }
 
 #video-list li:hover .delete-btn {
@@ -156,7 +178,7 @@ body {
 }
 
 .delete-btn:hover {
-  color: #e81123;
+  color: var(--accent-200);
 }
 
 /* 视频容器样式 */
@@ -182,106 +204,51 @@ body {
   outline: none !important;
 }
 
-.video-js video {
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-/* 去除默认边框和高亮 */
 .video-js .vjs-tech {
   outline: none !important;
   border: none !important;
   box-shadow: none !important;
 }
 
-/* 控制栏样式优化 */
+/* 控制栏样式 */
 .video-js .vjs-control-bar {
-  background: rgba(0, 0, 0, 0.8);
-  height: 3.6em;
-  display: flex;
-  align-items: center;
-  padding: 0 1em;
-}
-
-/* 隐藏倍速按钮 */
-.video-js .vjs-playback-rate {
-  display: none !important;
-}
-
-/* 倍速显示样式 */
-.video-js .vjs-speed-indicator {
-  position: relative !important;
-  top: 0 !important;
-  right: 0 !important;
-  height: 3.6em;
-  display: flex;
-  align-items: center;
-  padding: 0 0.8em;
-  margin-right: 0.5em;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.9);
-  font-family: monospace;
-  font-size: 0.9em;
-  font-weight: 500;
+  background: linear-gradient(to top, rgba(36, 97, 59, 0.9) 0%, rgba(36, 97, 59, 0.7) 50%, rgba(36, 97, 59, 0) 100%);
+  height: 4em;
   opacity: 0;
-  visibility: hidden;
-  transform: none;
-  transition: opacity 0.2s ease;
-  box-shadow: none;
-  pointer-events: none;
+  transition: all 0.3s ease;
+  border: none;
 }
 
-.video-js .vjs-speed-indicator.show {
+.video-js:hover .vjs-control-bar {
   opacity: 1;
-  visibility: visible;
-  transform: none;
 }
 
-.video-js .vjs-speed-indicator.hide {
-  opacity: 0;
-  visibility: hidden;
-  transform: none;
-}
-
-/* 播放按钮样式 */
+/* 大播放按钮样式 */
 .video-js .vjs-big-play-button {
-  background: rgba(0, 0, 0, 0.6);
-  border: 2px solid rgba(255, 255, 255, 0.7);
+  background: var(--primary-300);
+  border: none;
   border-radius: 50%;
   height: 80px;
   width: 80px;
   line-height: 76px;
   margin-left: -40px;
   margin-top: -40px;
+  transition: all 0.3s ease;
 }
 
 .video-js:hover .vjs-big-play-button {
-  background: rgba(0, 0, 0, 0.7);
-  border-color: #ffffff;
+  background: var(--primary-200);
+  transform: scale(1.1);
 }
 
-/* 进度条样式优化 */
-.video-js .vjs-progress-control {
-  position: relative !important;
-  top: 0 !important;
-  height: 3.6em;
-  display: flex;
-  align-items: center;
-  flex: 1;
-  margin: 0 1em;
-}
-
-.video-js .vjs-progress-control:hover .vjs-mouse-display {
-  display: block;
-}
-
+/* 进度条样式 */
 .video-js .vjs-progress-holder {
   height: 0.4em;
   margin: 0;
-  width: 100%;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 0.2em;
-  transition: height 0.1s ease;
+  transition: height 0.2s ease;
+  border: none;
 }
 
 .video-js .vjs-progress-control:hover .vjs-progress-holder {
@@ -289,7 +256,7 @@ body {
 }
 
 .video-js .vjs-play-progress {
-  background: #0078d7;
+  background: var(--primary-100);
   border-radius: 0.2em;
 }
 
@@ -297,106 +264,76 @@ body {
   display: none;
 }
 
-/* 控制按钮样式统一 */
+/* 音量控制样式 */
+.video-js .vjs-volume-panel {
+  transition: width 0.3s ease;
+}
+
+.video-js .vjs-volume-control {
+  opacity: 0;
+  width: 0;
+  transition: all 0.3s ease;
+}
+
+.video-js .vjs-volume-panel:hover .vjs-volume-control {
+  opacity: 1;
+  width: 5em;
+}
+
+.video-js .vjs-volume-bar {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 0.2em;
+  margin: 1.8em 0.4em;
+  border: none;
+}
+
+.video-js .vjs-volume-level {
+  background: var(--primary-100);
+  border-radius: 0.2em;
+}
+
+/* 控制按钮样式 */
 .video-js .vjs-control {
-  height: 3.6em;
-  width: 3em;
-  line-height: 3.6em;
-  text-align: center;
+  opacity: 0.9;
+  transition: all 0.2s ease;
+  color: var(--bg-100);
+}
+
+.video-js .vjs-control:hover {
+  opacity: 1;
+  color: var(--primary-100);
 }
 
 /* 时间显示样式 */
 .video-js .vjs-time-control {
-  min-width: 2.5em;
   font-family: monospace;
   font-size: 0.9em;
-  display: block !important;
   padding: 0 0.3em;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--bg-100);
+  min-width: 2.5em;
 }
 
-.video-js .vjs-remaining-time {
-  display: none;
+/* 倍速显示样式 */
+.video-js .vjs-speed-indicator {
+  background: var(--primary-300);
+  color: var(--bg-100);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  border: none;
 }
 
-/* 音量控制样式 */
-.video-js .vjs-volume-panel {
-  display: flex;
-  align-items: center;
-  width: auto !important;
-  margin-right: 0.5em;
-}
-
-.video-js .vjs-volume-panel .vjs-volume-control.vjs-volume-horizontal {
-  height: 3.6em !important;
-  width: 5em !important;
-  display: flex !important;
-  align-items: center;
-  margin: 0;
+.video-js .vjs-speed-indicator.show {
   opacity: 1;
-  position: relative;
-  visibility: visible;
+  transform: translateY(0);
 }
 
-.video-js .vjs-volume-panel .vjs-mute-control {
-  width: 2em;
-  margin-right: 0.5em;
-}
-
-.video-js .vjs-volume-panel .vjs-volume-bar {
-  margin: 0;
-  height: 0.4em;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 0.2em;
-}
-
-.video-js .vjs-volume-panel .vjs-volume-level {
-  background: #fff;
-  border-radius: 0.2em;
-  height: 0.4em;
-}
-
-.video-js .vjs-volume-panel .vjs-volume-bar.vjs-slider-horizontal {
-  width: 5em;
-}
-
-/* 控制栏布局优化 */
-.video-js .vjs-control-bar {
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  padding: 0 1em;
-  background: rgba(0, 0, 0, 0.8);
-  height: 3.6em;
-}
-
-.video-js .vjs-control-bar > * {
-  flex-shrink: 0;
-}
-
-.video-js .vjs-progress-control {
-  flex-shrink: 1;
-  flex-grow: 1;
-}
-
-/* 播放/暂停按钮样式 */
-.video-js .vjs-play-control {
-  width: 3em;
-  margin-right: 0.5em;
-}
-
-/* 全屏按钮样式 */
-.video-js .vjs-fullscreen-control {
-  width: 3em;
-}
-
-/* 全屏模式优化 */
-.video-js.vjs-fullscreen {
-  background-color: #000000;
-}
-
-.video-js.vjs-fullscreen .vjs-tech {
-  object-fit: contain;
+.video-js .vjs-speed-indicator.hide {
+  opacity: 0;
+  transform: translateY(-10px);
 }
 
 /* 滚动条样式 */
@@ -405,75 +342,29 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #2e2c29;
+  background: var(--bg-200);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4e4e4e;
+  background: var(--bg-300);
   border-radius: 4px;
+  border: 2px solid transparent;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #5e5e5e;
+  background: var(--primary-100);
 }
 
-/* 进度条时间提示样式优化 */
+/* 进度条时间提示样式 */
 .video-js .vjs-time-tooltip {
-  background-color: rgba(0, 0, 0, 0.8) !important;
+  background: var(--primary-300) !important;
+  color: var(--bg-100) !important;
   padding: 4px 8px !important;
-  border-radius: 2px !important;
+  border-radius: 4px !important;
   font-size: 12px !important;
-  font-family: monospace !important;
-  top: -2.2em !important;
+  border: none !important;
 }
 
 .video-js .vjs-mouse-display .vjs-time-tooltip {
-  background-color: rgba(0, 0, 0, 0.8) !important;
-}
-
-/* 进度条样式优化 */
-.video-js .vjs-progress-control {
-  position: relative !important;
-  top: 0 !important;
-  height: 3.6em;
-  display: flex;
-  align-items: center;
-  flex: 1;
-  margin: 0 1em;
-}
-
-.video-js .vjs-progress-control:hover .vjs-mouse-display {
-  display: block;
-}
-
-.video-js .vjs-progress-holder {
-  height: 0.4em;
-  margin: 0;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 0.2em;
-  transition: height 0.1s ease;
-}
-
-.video-js .vjs-progress-control:hover .vjs-progress-holder {
-  height: 0.6em;
-}
-
-.video-js .vjs-play-progress {
-  background: #0078d7;
-  border-radius: 0.2em;
-}
-
-.video-js .vjs-play-progress:before {
-  display: none;
-}
-
-/* 时间显示样式 */
-.video-js .vjs-time-control {
-  min-width: 2.5em;
-  font-family: monospace;
-  font-size: 0.9em;
-  display: block !important;
-  padding: 0 0.3em;
-  color: rgba(255, 255, 255, 0.9);
+  background: var(--primary-300) !important;
 } 
