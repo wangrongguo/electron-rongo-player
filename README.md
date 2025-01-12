@@ -2,7 +2,9 @@
 
 一个使用 Electron 开发的跨平台视频播放器，支持多种视频格式和流媒体播放。
 
-![预览图](assets/001.png)
+<div align="center">
+  <img src="assets/001.png" alt="视频播放器预览图" width="800">
+</div>
 
 ## 功能特点
 
